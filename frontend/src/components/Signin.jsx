@@ -10,7 +10,7 @@ import { tokenState } from "../atoms";
 
 export function Signin(){
     const [loading, setLoading] = useState(false);
-    return <div className={`flex h-screen bg-zinc-500 justify-center ${loading ? 'loader-overlay' : ''}`}>
+    return <div className={`flex h-screen bg-zinc-500 justify-center items-center ${loading ? 'loader-overlay' : ''}`}>
         {loading && (<Loader/>)}
         <MainSigninWindow setLoading = {setLoading}/>
     </div>
@@ -41,7 +41,7 @@ function MainSigninWindow({setLoading}){
                 setLoading(false);
             }
     }
-    return <div className="flex flex-col bg-white my-12 w-1/4 rounded-md pb-6 h-fit">
+    return <div className="flex flex-col bg-white w-1/4 rounded-md pb-6 h-fit">
         <Header/>
         <Inputs type = "text" title = "Email" placeholder = "johndoe@example.com" onChange={(e) => setUserState('email', e.target.value)}/>
         <Inputs type = "password" title= "Password" placeholder = "" onChange={(e) => setUserState('password', e.target.value)}/>

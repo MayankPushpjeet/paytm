@@ -34,11 +34,12 @@ export function Dashboard(){
         useEffect(()=>{
                 const getUsers = async ()=>{
                     try{
+                        console.log('trying')
                         const response = await axios.get('http://localhost:3000/api/v1/user/bulk',{
                             headers: {
                                 Authorization: `Bearer ${token}`, // Include the token in the request headers
                             },
-                            query :{
+                            params :{
                                 filter : filter,
                             }
                         });

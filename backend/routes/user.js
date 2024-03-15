@@ -20,12 +20,9 @@ const signinBody = zod.object({
 })
 
 userRouter.post('/signup', async (req,res,next) => {
-    console.log('signup recieved pro');
     const { success } = signupBody.safeParse(req.body);
-    console.log(success);
     if(!success)
     {
-        console.log('failed');
         return res.status(411).json({message : "Email already taken/ Incorrect inputs"});
     }
 
@@ -33,7 +30,6 @@ userRouter.post('/signup', async (req,res,next) => {
 
     if(existingUser)
     {
-        console.log('failed pro');
         return res.status(411).json({message : "Email already taken"});
     }
     const user = await userData.create({
@@ -54,7 +50,6 @@ userRouter.post('/signup', async (req,res,next) => {
     const token = jwt.sign({
         userId
     },JWT_SECRET);
-    console.log('done');
     res.status(200).json({message : "user created successfully", token : token, user : user});
 
 });
